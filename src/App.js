@@ -104,6 +104,16 @@ function AIChat() {
     const answer = await fetchAIApi(trans)
     
     let index = 0;
+    let count = 0
+    setMessages(prevMessages => {
+          const newMessages = [...prevMessages];
+          if (count == 0) {
+            newMessages[botMessageIndex + 1].text += answer.charAt(index);
+          }
+          
+          count++
+          return newMessages;
+    });
     console.log(answer)
     
     const timeout = setTimeout(function type() {
@@ -112,7 +122,7 @@ function AIChat() {
       setMessages(prevMessages => {
           const newMessages = [...prevMessages];
           if (count == 0) {
-            newMessages[botMessageIndex].text += answer.charAt(index);
+            newMessages[botMessageIndex + 1].text += answer.charAt(index);
           }
           
           count++
