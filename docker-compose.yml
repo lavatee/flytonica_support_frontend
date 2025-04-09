@@ -1,16 +1,16 @@
 networks:
   flytonica:
 services:
-  nginx:
-    image: nginx:stable-alpine
-    ports:
-      - 80:80
-    volumes:
-      - ./nginx_all.conf:/etc/nginx/nginx.conf
-    networks:
-      - flytonica
-    depends_on:
-      - frontend
+  # nginx:
+  #   image: nginx:stable-alpine
+  #   ports:
+  #     - 80:80
+  #   volumes:
+  #     - ./nginx_all.conf:/etc/nginx/nginx.conf
+  #   networks:
+  #     - flytonica
+  #   depends_on:
+  #     - frontend
   frontend:
     build:
       context: ./
