@@ -1,5 +1,5 @@
 networks:
-  - flytonica
+  flytonica:
 services:
   nginx:
     image: nginx:stable-alpine
@@ -20,5 +20,7 @@ services:
   backend:
     build:
       context: ./flytonica_support_api
+    networks:
+      - flytonica
 
   
