@@ -11,16 +11,15 @@ services:
       - flytonica
     depends_on:
       - frontend
-      - backend
   frontend:
     build:
       context: ./
     networks:
       - flytonica
-  backend:
-    build:
-      context: ./flytonica_support_api
-    networks:
-      - flytonica
+  # backend:
+  #   build:
+  #     context: ./flytonica_support_api
+  #   networks:
+  #     - flytonica
 
   
