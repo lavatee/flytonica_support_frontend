@@ -199,27 +199,13 @@ function AIChat() {
 }
 
 async function fetchAIApi(query) {
-  const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
+  const response = await fetch("/api/question", {
     method: "POST",
     headers: {
-      "Authorization": "Bearer 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",
       "Content-Type": "application/json"
     },
-    body: JSON.stringify({
-      "model": "google/gemma-3-1b-it:free",
-      "messages": [
-        {
-          "role": "user",
-          "content": [
-            {
-              "type": "text",
-              "text": query
-            }
-          ]
-        }
-      ]
-    })
+    body: JSON.stringify({question: query})
   });
   const data = await response.json()
-  return data?.choices?.[0]?.message?.content
+  return data?.content
 }
