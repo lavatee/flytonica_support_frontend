@@ -190,7 +190,7 @@ function AIChat() {
               }
             </div>
             
-            {/* <textarea placeholder='Сообщение' value={transcript} onChange={(e) => setTranscript(e.target.value)} style={{marginTop: "10px"}}/> */}
+            <textarea placeholder='Сообщение' value={transcript} onChange={(e) => setTranscript(e.target.value)} style={{marginTop: "10px"}}/>
             
           </div>
       </div>
