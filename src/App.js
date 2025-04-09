@@ -112,7 +112,7 @@ function AIChat() {
       setMessages(prevMessages => {
           const newMessages = [...prevMessages];
           if (count == 0) {
-            newMessages[botMessageIndex + 1].text += answer.charAt(index);
+            newMessages[botMessageIndex].text += answer.charAt(index);
           }
           
           count++
