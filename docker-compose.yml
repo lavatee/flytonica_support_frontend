@@ -1,0 +1,7 @@
+networks:
+  - flytonica
+services:
+  frontend:
+    build: "./"
+    command: "
+  
