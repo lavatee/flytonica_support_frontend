@@ -16,6 +16,8 @@ services:
       context: ./
     networks:
       - flytonica
+    ports:
+      - 3000:3000
   # backend:
   #   build:
   #     context: ./flytonica_support_api
