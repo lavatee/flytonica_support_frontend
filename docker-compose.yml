@@ -17,8 +17,8 @@ services:
       context: ./
     networks:
       - flytonica
-    backend:
-      build:
-        context: ./flytonica_support_api
+  backend:
+    build:
+      context: ./flytonica_support_api
 
   
