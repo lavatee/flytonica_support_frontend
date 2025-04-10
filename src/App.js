@@ -215,6 +215,15 @@ function AIChat() {
       </div>
       </>
   );
+  async function speak(text) {
+      const utterance = new SpeechSynthesisUtterance(text);
+      const pavelVoice = voices.find(voice => voice.name === "Microsoft Pavel - Russian (Russia)");
+      if (pavelVoice) {
+          utterance.voice = pavelVoice;
+      }
+      
+      speechSynthesis.speak(utterance);
+  }
 }
 
 async function fetchAIApi(query) {
@@ -229,12 +238,4 @@ async function fetchAIApi(query) {
   return data?.content
 }
 
-async function speak(text) {
-    const utterance = new SpeechSynthesisUtterance(text);
-    const pavelVoice = voices.find(voice => voice.name === "Microsoft Pavel - Russian (Russia)");
-    if (pavelVoice) {
-        utterance.voice = pavelVoice;
-    }
-    
-    speechSynthesis.speak(utterance);
-  }
+
