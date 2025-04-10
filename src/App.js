@@ -221,6 +221,12 @@ async function fetchAIApi(query) {
 }
 
 async function speak(text) {
+    const voices = speechSynthesis.getVoices();
     const utterance = new SpeechSynthesisUtterance(text);
+    const pavelVoice = voices.find(voice => voice.name === "Microsoft Pavel - Russian (Russia)");
+    if (pavelVoice) {
+        utterance.voice = pavelVoice;
+    }
+    
     speechSynthesis.speak(utterance);
-}
+  }
