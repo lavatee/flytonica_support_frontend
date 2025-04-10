@@ -102,7 +102,7 @@ function AIChat() {
     const trans = transcript
     setTranscript("")
     const answer = await fetchAIApi(trans)
-    
+    speak(answer)
     let index = 0;
     let count = 0
     setMessages(prevMessages => {
@@ -218,4 +218,9 @@ async function fetchAIApi(query) {
   });
   const data = await response.json()
   return data?.content
+}
+
+async function speak(text) {
+    const utterance = new SpeechSynthesisUtterance(text);
+    speechSynthesis.speak(utterance);
 }
