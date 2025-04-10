@@ -24,6 +24,7 @@ function AIChat() {
   const [messages, setMessages] = useState([{isUserMessage: false, text: "Привет, я твой ИИ-Помощник, обладающий исключительными знаниями в области БПЛА и компании Flytonica"}])
   const [isLoading, setIsLoading] = useState(false)
   const [userDevice, setUserDevice] = useState("desktop")
+  const [voices, setVoices] = useState([])
   useEffect(() => {
     if (lastMessagesLen < messages?.length) {
       console.log(messages[messages?.length - 1])
@@ -46,7 +47,15 @@ function AIChat() {
         setUserDevice("desktop");
     }
   };
-
+  useEffect(() => {
+    const fetchVoices = () => {
+      const availableVoices = speechSynthesis.getVoices();
+      setVoices(availableVoices);
+    };
+    console.log(voices)
+    fetchVoices();
+    speechSynthesis.onvoiceschanged = fetchVoices;
+  }, []);
   useEffect(() => {
     checkScreenWidth();
     window.addEventListener("resize", checkScreenWidth);
@@ -221,7 +230,6 @@ async function fetchAIApi(query) {
 }
 
 async function speak(text) {
-    const voices = speechSynthesis.getVoices();
     const utterance = new SpeechSynthesisUtterance(text);
     const pavelVoice = voices.find(voice => voice.name === "Microsoft Pavel - Russian (Russia)");
     if (pavelVoice) {
